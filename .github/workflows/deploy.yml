@@ -1,4 +1,3 @@
-#hello from ghaith ben ammmar 
 name: CI/CD React App to AKS
 
 on:
@@ -32,10 +31,18 @@ jobs:
           docker build -t $IMAGE:$TAG .
           docker push $IMAGE:$TAG
 
-      - name: Set up Kubeconfig
-        run: |
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > kubeconfig.yaml
-          export KUBECONFIG=kubeconfig.yaml
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set AKS context
+        uses: azure/aks-set-context@v3
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          resource-group: PCD-frontend         
+          cluster-name: AKS-frontend-pcd-app
+    
 
       - name: Deploy to AKS
         run: |
