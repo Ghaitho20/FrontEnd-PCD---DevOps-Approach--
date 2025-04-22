@@ -1,0 +1,44 @@
+# Ne pas inclure les dépendances installées
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Dossiers de build
+build
+dist
+
+# Fichiers environnement
+.env
+.env.local
+.env.*.local
+
+# Dossiers IDE
+.vscode
+.idea
+
+# Git
+.git
+.gitignore
+
+# Fichiers systèmes
+.DS_Store
+Thumbs.db
+
+# Images lourdes
+public/images
+public/assets/images
+src/assets/images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+
+# Autres fichiers lourds
+*.mp4
+*.mov
+*.avi
+*.mp3
+*.wav

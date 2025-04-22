@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-service
+spec:
+  selector:
+    app: react-frontend
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80        # The port you'll use in the browser (http://<external-ip>)
+      targetPort: 80   # The port the container listens on
